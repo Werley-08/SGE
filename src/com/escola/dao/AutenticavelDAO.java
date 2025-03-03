@@ -1,21 +1,14 @@
-package com.Conexao.util;
+package com.escola.dao;
 
-import com.Escola.util.Autenticavel;
-import java.sql.PreparedStatement;
+import com.escola.bd_conexao.ConexaoDAO;
+import com.escola.models.Autenticavel;
+
+import javax.swing.*;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author franc
- */
 public class AutenticavelDAO{
     
     Connection conn;
@@ -40,7 +33,5 @@ public class AutenticavelDAO{
             JOptionPane.showMessageDialog(null, e.getMessage());
             return null;
         }
-        
     }
-    
 }

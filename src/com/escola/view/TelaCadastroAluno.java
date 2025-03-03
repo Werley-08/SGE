@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.InterfacesGraficas.util;
+package com.escola.view;
 
-import com.Escola.util.Escola;
-import javax.swing.JOptionPane;
+import com.escola.controller.AlunoController;
+
+import javax.swing.*;
 
 /**
  *
@@ -408,16 +409,15 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
 
     private void adicionarAluno(){
         
-        new Escola().adicionarAluno( txtNomeAlu.getText(), 
-                                    Integer.parseInt(txtidadeAlu.getText()),
-                                    (String) txtGeneroAlu.getSelectedItem(),
-                                    txtContatoALu.getText(),
-                                    txtCPFAlu.getText(),
-                                    Integer.parseInt(txtMatriculaAlu.getText()),
-                                    txtSerieAlu.getText());
+        new AlunoController().adicionarAluno(txtNomeAlu.getText(),
+                Integer.parseInt(txtidadeAlu.getText()),
+                (String) txtGeneroAlu.getSelectedItem(),
+                txtContatoALu.getText(),
+                txtCPFAlu.getText(),
+                Integer.parseInt(txtMatriculaAlu.getText()),
+                txtSerieAlu.getText());
         
-                               JOptionPane.showMessageDialog(null, "Dados Cadastrados com Sucesso");
-        
+        JOptionPane.showMessageDialog(null, "Dados Cadastrados com Sucesso");
     }
     
     private void limparCampos(){
@@ -429,9 +429,5 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         txtCPFAlu.setText("");
         txtMatriculaAlu.setText("");
         txtSerieAlu.setText("");
-        
     }
-
 }
-
-

@@ -2,21 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.InterfacesGraficas.util;
+package com.escola.view;
 
-import com.Escola.util.Escola;
-import javax.swing.JOptionPane;
+import com.escola.controller.FuncionarioController;
+import com.escola.models.Funcionario;
+
+import javax.swing.*;
 
 /**
  *
  * @author franc
  */
-public class TelaCadastroFuncionario extends javax.swing.JFrame {
+public class TelaEditarFuncionario extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaPrincipal
      */
-    public TelaCadastroFuncionario() {
+    
+    private int id;
+    
+    public TelaEditarFuncionario() {
         initComponents();
     }
 
@@ -46,7 +51,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        btnCadastrarFun = new javax.swing.JButton();
+        btnAtualizarFuncionario = new javax.swing.JButton();
         txtContatoFun = new javax.swing.JFormattedTextField();
         txtCpfFun = new javax.swing.JFormattedTextField();
         txtSalarioFun = new javax.swing.JFormattedTextField();
@@ -65,14 +70,14 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Yu Gothic", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 204, 153));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CADASTRAR:");
+        jLabel1.setText("EDITAR:");
         jLabel1.setToolTipText("");
 
         jSeparator1.setForeground(new java.awt.Color(255, 204, 153));
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 204, 153));
-        jLabel2.setText("Digite os dados do funcionário:");
+        jLabel2.setText("Digite os novos dados do funcionário:");
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 204, 153));
@@ -110,11 +115,6 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
 
         txtGeneroFun.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino", "Não Binário", "Prefiro Não Dizer" }));
         txtGeneroFun.setPreferredSize(new java.awt.Dimension(126, 26));
-        txtGeneroFun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtGeneroFunActionPerformed(evt);
-            }
-        });
 
         txtCargoFun.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Professor(a)", "Diretor(a)", "Coordenador(a)", "Faxineiro(a)", "Merendeira(o)" }));
         txtCargoFun.setPreferredSize(new java.awt.Dimension(119, 26));
@@ -141,13 +141,13 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
             }
         });
 
-        btnCadastrarFun.setBackground(new java.awt.Color(51, 51, 51));
-        btnCadastrarFun.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnCadastrarFun.setForeground(new java.awt.Color(255, 255, 255));
-        btnCadastrarFun.setText("Cadastrar");
-        btnCadastrarFun.addActionListener(new java.awt.event.ActionListener() {
+        btnAtualizarFuncionario.setBackground(new java.awt.Color(51, 51, 51));
+        btnAtualizarFuncionario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAtualizarFuncionario.setForeground(new java.awt.Color(255, 255, 255));
+        btnAtualizarFuncionario.setText("Salvar");
+        btnAtualizarFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarFunActionPerformed(evt);
+                btnAtualizarFuncionarioActionPerformed(evt);
             }
         });
 
@@ -203,11 +203,14 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAtualizarFuncionario)
+                .addGap(58, 58, 58))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(302, 302, 302)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,14 +236,12 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                                     .addComponent(txtCargoFun, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtGeneroFun, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtContatoFun, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(102, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCadastrarFun)
-                .addGap(74, 74, 74))
+                                    .addComponent(txtContatoFun, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(293, 293, 293)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(211, 211, 211)))
+                .addGap(102, 102, 102))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,7 +249,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -287,22 +288,26 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtContatoFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtIdentificacaoFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(37, 37, 37)
+                .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(btnCadastrarFun))
-                .addContainerGap(39, Short.MAX_VALUE))
+                    .addComponent(btnAtualizarFuncionario))
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -319,20 +324,19 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        TelaPrincipal telaprincipal = new TelaPrincipal();
+        TelaVisualizarFuncionario telaVisualizarFuncionario = new TelaVisualizarFuncionario();
 
-        telaprincipal.setVisible(true);
+        telaVisualizarFuncionario.setVisible(true);
 
         dispose();
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnCadastrarFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFunActionPerformed
-
-        cadastrarFuncionario();
-        limparCampos();
+    private void btnAtualizarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarFuncionarioActionPerformed
         
-    }//GEN-LAST:event_btnCadastrarFunActionPerformed
+        atualizarDados();
+        
+    }//GEN-LAST:event_btnAtualizarFuncionarioActionPerformed
 
     private void txtContatoFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContatoFunActionPerformed
         // TODO add your handling code here:
@@ -349,10 +353,6 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     private void txtIdentificacaoFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdentificacaoFunActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdentificacaoFunActionPerformed
-
-    private void txtGeneroFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGeneroFunActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtGeneroFunActionPerformed
 
     /**
      * @param args the command line arguments
@@ -371,26 +371,14 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -399,13 +387,13 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastroFuncionario().setVisible(true);
+                new TelaEditarFuncionario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCadastrarFun;
+    private javax.swing.JButton btnAtualizarFuncionario;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -429,32 +417,36 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtSalarioFun;
     // End of variables declaration//GEN-END:variables
 
-    private void cadastrarFuncionario(){
-       
-        new Escola().adicionarFuncionario( txtNomeFun.getText(), 
-                                    Integer.parseInt(txtIdadeFun.getText()),
-                                    (String) txtGeneroFun.getSelectedItem(),
-                                    txtContatoFun.getText(),
-                                    txtCpfFun.getText(),
-                                    (String) txtCargoFun.getSelectedItem(),
-                                    txtSalarioFun.getText(),
-                                    Integer.parseInt(txtIdentificacaoFun.getText()));
+    public void passaValores(Funcionario funcionario, int id){
+        
+        setId(id);
+        
+        txtNomeFun.setText(funcionario.getNome());
+        txtIdadeFun.setText(Integer.toString(funcionario.getIdade()));
+        txtGeneroFun.setSelectedItem(funcionario.getGenero());
+        txtContatoFun.setText(funcionario.getContato());
+        txtCpfFun.setText(funcionario.getCPF());
+        txtCargoFun.setSelectedItem(funcionario.getCargo());
+        txtIdentificacaoFun.setText(Integer.toString(funcionario.getIdentificacao()));
+        txtSalarioFun.setText(funcionario.getSalario());
+    }
 
-                                    JOptionPane.showMessageDialog(null, "Dados Cadastrados com Sucesso");
-        
+    private void atualizarDados(){
+       
+        new FuncionarioController().atualizarFuncionario( txtNomeFun.getText(),
+                Integer.parseInt(txtIdadeFun.getText()),
+                (String) txtGeneroFun.getSelectedItem(),
+                txtContatoFun.getText(),
+                txtCpfFun.getText(),
+                (String) txtCargoFun.getSelectedItem(),
+                txtSalarioFun.getText(),
+                Integer.parseInt(txtIdentificacaoFun.getText()),
+                this.getId());
+
+        JOptionPane.showMessageDialog(null, "Dados Atualizados com Sucesso");
     }
-    
-    private void limparCampos(){
-        
-        txtNomeFun.setText("");
-        txtIdadeFun.setText("");
-        txtGeneroFun.setSelectedItem("");
-        txtContatoFun.setText("");
-        txtCpfFun.setText("");
-        txtCargoFun.setSelectedItem("");
-        txtSalarioFun.setText("");
-        txtIdentificacaoFun.setText("");
-      
-    }
-    
+
+    public int getId(){ return this.id; }
+
+    public void setId(int id){ this.id = id; }
 }

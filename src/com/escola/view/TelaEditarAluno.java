@@ -2,11 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.InterfacesGraficas.util;
+package com.escola.view;
 
-import com.Escola.util.Aluno;
-import com.Escola.util.Escola;
-import javax.swing.JOptionPane;
+import com.escola.controller.AlunoController;
+import com.escola.models.Aluno;
+
+import javax.swing.*;
 
 /**
  *
@@ -433,35 +434,19 @@ public class TelaEditarAluno extends javax.swing.JFrame {
     
     private void atualizarDados(){
         
-        Escola escola = new Escola();
+        new AlunoController().atualizarAluno( txtNomeAlu.getText(),
+                Integer.parseInt(txtidadeAlu.getText()),
+                (String) txtGeneroAlu.getSelectedItem(),
+                txtContatoALu.getText(),
+                txtCPFAlu.getText(),
+                Integer.parseInt(txtMatriculaAlu.getText()),
+                txtSerieAlu.getText(),
+                this.getId());
         
-        escola.atualizarAluno( txtNomeAlu.getText(), 
-                               Integer.parseInt(txtidadeAlu.getText()),
-                               (String) txtGeneroAlu.getSelectedItem(),
-                               txtContatoALu.getText(),
-                               txtCPFAlu.getText(),
-                               Integer.parseInt(txtMatriculaAlu.getText()),
-                               txtSerieAlu.getText(),
-                               this.getId());
-        
-                               JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso");
-        
+        JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso");
     }
-    
-    // Métodos gets
-    
-    public int getId(){
-        
-        return this.id;
-        
-    }
-    
-    // Métodos sets
 
-    public void setId(int id){
-        
-        this.id = id;
-        
-    }
-    
+    public int getId(){ return this.id; }
+
+    public void setId(int id){ this.id = id; }
 }

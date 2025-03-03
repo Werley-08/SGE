@@ -2,26 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.InterfacesGraficas.util;
+package com.escola.view;
 
-import com.Escola.util.Aluno;
-import com.Escola.util.Escola;
-import com.Escola.util.Pessoa;
-import java.util.ArrayList;
+import com.escola.controller.FuncionarioController;
+import com.escola.models.Funcionario;
+import com.escola.models.Pessoa;
+
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 
 /**
  *
  * @author franc
  */
-public class TelaVisualizarAluno extends javax.swing.JFrame {
+public class TelaVisualizarFuncionario extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaPrincipal
      */
-    public TelaVisualizarAluno() {
+    public TelaVisualizarFuncionario() {
         initComponents();
-        exibirAlunos();
+        exibirFuncionarios();
     }
 
     /**
@@ -35,7 +36,7 @@ public class TelaVisualizarAluno extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaAluno = new javax.swing.JTable();
+        tabelaFuncionario = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -51,43 +52,30 @@ public class TelaVisualizarAluno extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(850, 498));
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 498));
 
-        tabelaAluno.setBackground(new java.awt.Color(255, 204, 153));
-        tabelaAluno.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
-        tabelaAluno.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaFuncionario.setBackground(new java.awt.Color(255, 204, 153));
+        tabelaFuncionario.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
+        tabelaFuncionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Idade", "Gênero", "Contato", "CPF", "ID", "Série", "Matrícula"
+                "Nome", "Idade", "Gênero", "Contato", "CPF", "ID", "Cargo", "Salario", "Identificação"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        tabelaAluno.setRowSelectionAllowed(false);
-        tabelaAluno.setSelectionBackground(new java.awt.Color(51, 51, 51));
-        tabelaAluno.setSelectionForeground(new java.awt.Color(51, 51, 51));
-        jScrollPane1.setViewportView(tabelaAluno);
-        if (tabelaAluno.getColumnModel().getColumnCount() > 0) {
-            tabelaAluno.getColumnModel().getColumn(0).setHeaderValue("Nome");
-            tabelaAluno.getColumnModel().getColumn(1).setHeaderValue("Idade");
-            tabelaAluno.getColumnModel().getColumn(2).setHeaderValue("Gênero");
-            tabelaAluno.getColumnModel().getColumn(3).setHeaderValue("Contato");
-            tabelaAluno.getColumnModel().getColumn(4).setHeaderValue("CPF");
-            tabelaAluno.getColumnModel().getColumn(5).setHeaderValue("ID");
-            tabelaAluno.getColumnModel().getColumn(6).setHeaderValue("Série");
-            tabelaAluno.getColumnModel().getColumn(7).setHeaderValue("Matrícula");
-        }
+        jScrollPane1.setViewportView(tabelaFuncionario);
 
         jSeparator1.setForeground(new java.awt.Color(255, 204, 153));
 
@@ -132,15 +120,18 @@ public class TelaVisualizarAluno extends javax.swing.JFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 850, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(90, 90, 90))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(242, 242, 242))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(17, 17, 17)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
                 .addGap(18, 18, 18))
@@ -151,8 +142,8 @@ public class TelaVisualizarAluno extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -182,24 +173,24 @@ public class TelaVisualizarAluno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        Funcionario funcionario = this.pegaValores();
         
-        Aluno aluno = this.pegaValores();
-        
-        TelaEditarAluno telaEditarAluno = new TelaEditarAluno();
+        TelaEditarFuncionario telaEditarFuncionario = new TelaEditarFuncionario();
       
-        telaEditarAluno.setVisible(true);
+        telaEditarFuncionario.setVisible(true);
         
-        String id = tabelaAluno.getModel().getValueAt(tabelaAluno.getSelectedRow(), 5).toString();
+        String id = tabelaFuncionario.getModel().getValueAt(tabelaFuncionario.getSelectedRow(), 5).toString();
         
-        telaEditarAluno.passaValores(aluno, Integer.parseInt(id));
+        telaEditarFuncionario.passaValores(funcionario, Integer.parseInt(id));
         
         dispose();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        deletarAluno();
-        exibirAlunos();
+        deletarFuncionario();
+        exibirFuncionarios();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -227,18 +218,14 @@ public class TelaVisualizarAluno extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaVisualizarAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVisualizarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaVisualizarAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVisualizarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaVisualizarAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVisualizarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaVisualizarAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVisualizarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -247,7 +234,7 @@ public class TelaVisualizarAluno extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaVisualizarAluno().setVisible(true);
+                new TelaVisualizarFuncionario().setVisible(true);
             }
         });
     }
@@ -260,61 +247,58 @@ public class TelaVisualizarAluno extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable tabelaAluno;
+    private javax.swing.JTable tabelaFuncionario;
     // End of variables declaration//GEN-END:variables
 
-    private void exibirAlunos(){
+    private void exibirFuncionarios(){
         
-        DefaultTableModel model = (DefaultTableModel) tabelaAluno.getModel();
+        DefaultTableModel model = (DefaultTableModel) tabelaFuncionario.getModel();
         model.setNumRows(0);
         
-        ArrayList<Pessoa> lista = new Escola().visualizarTodosAlunos();
+        ArrayList<Pessoa> lista = new FuncionarioController().visualizarTodosFuncionarios();
         
         for(int i = 0; i < lista.size(); i++){
             
-            Aluno aluno = (Aluno) lista.get(i);
+            Funcionario funcionario = (Funcionario) lista.get(i);
             
             model.addRow(new Object[]{
                 
-                aluno.getNome(),
-                aluno.getIdade(),
-                aluno.getGenero(),
-                aluno.getContato(),
-                aluno.getCPF(),
-                aluno.getId(),
-                aluno.getSerie(),
-                aluno.getMatricula()
-                
+                funcionario.getNome(),
+                funcionario.getIdade(),
+                funcionario.getGenero(),
+                funcionario.getContato(),
+                funcionario.getCPF(),
+                funcionario.getId(),
+                funcionario.getCargo(),
+                funcionario.getSalario(),
+                funcionario.getIdentificacao()
             });
-            
         }
-        
     }
     
-    private void deletarAluno(){
+    private void deletarFuncionario(){
         
-        int linha = tabelaAluno.getSelectedRow();
+        int linha = tabelaFuncionario.getSelectedRow();
         int coluna = 5;
                 
-        String id = tabelaAluno.getModel().getValueAt(linha, coluna).toString();
+        String id = tabelaFuncionario.getModel().getValueAt(linha, coluna).toString();
         
-        new Escola().removerAluno(Integer.parseInt(id));
-    }
-    
-    private Aluno pegaValores(){
-        
-        int linha = tabelaAluno.getSelectedRow();
-        
-        Aluno aluno = new Aluno(tabelaAluno.getModel().getValueAt(linha, 0).toString(),
-                                Integer.parseInt(tabelaAluno.getModel().getValueAt(linha, 1).toString()),
-                                tabelaAluno.getModel().getValueAt(linha, 2).toString(),
-                                tabelaAluno.getModel().getValueAt(linha, 3).toString(),
-                                tabelaAluno.getModel().getValueAt(linha, 4).toString(),
-                                Integer.parseInt(tabelaAluno.getModel().getValueAt(linha, 7).toString()),
-                                tabelaAluno.getModel().getValueAt(linha, 6).toString());
-        
-        return aluno;
-        
+        new FuncionarioController().removerFuncionario(Integer.parseInt(id));
     }
 
+    private Funcionario pegaValores(){
+        
+        int linha = tabelaFuncionario.getSelectedRow();
+        
+        Funcionario funcionario = new Funcionario(tabelaFuncionario.getModel().getValueAt(linha, 0).toString(),
+                                                  Integer.parseInt(tabelaFuncionario.getModel().getValueAt(linha, 1).toString()),
+                                                  tabelaFuncionario.getModel().getValueAt(linha, 2).toString(),
+                                                  tabelaFuncionario.getModel().getValueAt(linha, 3).toString(),
+                                                  tabelaFuncionario.getModel().getValueAt(linha, 4).toString(),
+                                                  tabelaFuncionario.getModel().getValueAt(linha, 6).toString(),
+                                                  tabelaFuncionario.getModel().getValueAt(linha, 7).toString(),
+                                                  Integer.parseInt(tabelaFuncionario.getModel().getValueAt(linha, 8).toString()));
+        
+        return funcionario;
+    }
 }
