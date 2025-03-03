@@ -1,13 +1,14 @@
 package com.escola.service;
 
 import com.escola.dao.UsuarioDAO;
+import com.escola.dao.interfaces.IUsuarioDAO;
 import com.escola.models.Usuario;
 
 import java.sql.ResultSet;
 
 public class UsuarioService {
 
-    UsuarioDAO usuarioDAO;
+    IUsuarioDAO usuarioDAO;
 
     public UsuarioService() {
         usuarioDAO = new UsuarioDAO();
