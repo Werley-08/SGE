@@ -1,4 +1,4 @@
-package com.Escola.util;
+package com.models;
 
 public class Aluno implements Pessoa {
 

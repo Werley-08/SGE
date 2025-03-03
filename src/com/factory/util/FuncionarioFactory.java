@@ -1,6 +1,6 @@
 package com.factory.util;
 
-import com.Escola.util.Funcionario;
+import com.models.Funcionario;
 
 public class FuncionarioFactory implements PessoaFactory{
 

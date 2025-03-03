@@ -1,7 +1,7 @@
-package com.DAO.util;
+package com.DAO;
 
-import com.Conexao.util.ConexaoDAO;
-import com.Escola.util.Autenticavel;
+import com.conexao.ConexaoDAO;
+import com.models.Autenticavel;
 
 import javax.swing.*;
 import java.sql.Connection;

@@ -1,8 +1,8 @@
-package com.DAO.util;
+package com.DAO;
 
-import com.Conexao.util.ConexaoDAO;
-import com.Escola.util.Funcionario;
-import com.Escola.util.Pessoa;
+import com.conexao.ConexaoDAO;
+import com.models.Funcionario;
+import com.models.Pessoa;
 
 import javax.swing.*;
 import java.sql.Connection;

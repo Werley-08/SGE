@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.InterfacesGraficas.util;
+package com.interfacesGraficas;
 
-import com.DAO.util.AutenticavelDAO;
-import com.Escola.util.Autenticavel;
+import com.DAO.AutenticavelDAO;
+import com.models.Autenticavel;
 
 import javax.swing.*;
 import java.sql.ResultSet;

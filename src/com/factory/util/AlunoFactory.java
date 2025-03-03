@@ -1,6 +1,6 @@
 package com.factory.util;
 
-import com.Escola.util.Aluno;
+import com.models.Aluno;
 
 public class AlunoFactory implements PessoaFactory{
 

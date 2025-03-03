@@ -2,9 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.InterfacesGraficas.util;
+package com.interfacesGraficas;
 
-import com.Escola.util.Escola;
+import com.controller.AlunoController;
+import com.escola.Escola;
+import com.models.Aluno;
 
 import javax.swing.*;
 
@@ -12,13 +14,19 @@ import javax.swing.*;
  *
  * @author franc
  */
-public class TelaCadastroAluno extends javax.swing.JFrame {
+
+public class TelaEditarAluno extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaPrincipal
      */
-    public TelaCadastroAluno() {
+    
+    private int id;
+    
+    public TelaEditarAluno(){
+        
         initComponents();
+        
     }
 
     /**
@@ -44,7 +52,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         txtGeneroAlu = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        btnCadastrarAluno = new javax.swing.JButton();
+        btnAtualizarAluno = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         txtCPFAlu = new javax.swing.JFormattedTextField();
         txtContatoALu = new javax.swing.JFormattedTextField();
@@ -64,7 +72,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Yu Gothic", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 204, 153));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CADASTRO:");
+        jLabel1.setText("EDITAR:");
         jLabel1.setToolTipText("");
 
         jSeparator1.setForeground(new java.awt.Color(255, 204, 153));
@@ -123,13 +131,13 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 204, 153));
         jLabel10.setText("Contato:");
 
-        btnCadastrarAluno.setBackground(new java.awt.Color(51, 51, 51));
-        btnCadastrarAluno.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnCadastrarAluno.setForeground(new java.awt.Color(255, 255, 255));
-        btnCadastrarAluno.setText("Cadastrar");
-        btnCadastrarAluno.addActionListener(new java.awt.event.ActionListener() {
+        btnAtualizarAluno.setBackground(new java.awt.Color(51, 51, 51));
+        btnAtualizarAluno.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAtualizarAluno.setForeground(new java.awt.Color(255, 255, 255));
+        btnAtualizarAluno.setText("Salvar");
+        btnAtualizarAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarAlunoActionPerformed(evt);
+                btnAtualizarAlunoActionPerformed(evt);
             }
         });
 
@@ -195,13 +203,22 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAtualizarAluno)
+                .addGap(119, 119, 119))
             .addGroup(panelLayout.createSequentialGroup()
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGap(100, 100, 100)
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGap(163, 163, 163)
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,17 +237,8 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtGeneroAlu, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtContatoALu, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(302, 302, 302)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(102, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCadastrarAluno)
-                .addGap(119, 119, 119))
+                            .addComponent(txtContatoALu, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(102, 102, 102))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,7 +287,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(btnCadastrarAluno))
+                    .addComponent(btnAtualizarAluno))
                 .addGap(53, 53, 53))
         );
 
@@ -310,20 +318,20 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtidadeAluActionPerformed
 
-    private void btnCadastrarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarAlunoActionPerformed
+    private void btnAtualizarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarAlunoActionPerformed
         
-        adicionarAluno();
-        limparCampos();
+        atualizarDados();
         
-    }//GEN-LAST:event_btnCadastrarAlunoActionPerformed
-    
+    }//GEN-LAST:event_btnAtualizarAlunoActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        TelaPrincipal telaprincipal = new TelaPrincipal();
+        TelaVisualizarAluno telaVisualizarAluno = new TelaVisualizarAluno();
 
-        telaprincipal.setVisible(true);
+        telaVisualizarAluno.setVisible(true);
 
         dispose();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtCPFAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFAluActionPerformed
@@ -363,14 +371,18 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditarAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditarAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditarAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditarAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -379,13 +391,13 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastroAluno().setVisible(true);
+                new TelaEditarAluno().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCadastrarAluno;
+    private javax.swing.JButton btnAtualizarAluno;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -407,32 +419,35 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
     private javax.swing.JLabel voi;
     // End of variables declaration//GEN-END:variables
 
-    private void adicionarAluno(){
+    public void passaValores(Aluno aluno, int id){
         
-        new Escola().adicionarAluno( txtNomeAlu.getText(), 
-                                    Integer.parseInt(txtidadeAlu.getText()),
-                                    (String) txtGeneroAlu.getSelectedItem(),
-                                    txtContatoALu.getText(),
-                                    txtCPFAlu.getText(),
-                                    Integer.parseInt(txtMatriculaAlu.getText()),
-                                    txtSerieAlu.getText());
+        setId(id);
         
-                               JOptionPane.showMessageDialog(null, "Dados Cadastrados com Sucesso");
+        txtNomeAlu.setText(aluno.getNome());
+        txtidadeAlu.setText(Integer.toString(aluno.getIdade()));
+        txtGeneroAlu.setSelectedItem(aluno.getGenero());
+        txtContatoALu.setText(aluno.getContato());
+        txtCPFAlu.setText(aluno.getCPF());
+        txtMatriculaAlu.setText(Integer.toString(aluno.getMatricula()));
+        txtSerieAlu.setText(aluno.getSerie());
         
     }
     
-    private void limparCampos(){
+    private void atualizarDados(){
         
-        txtNomeAlu.setText(""); 
-        txtidadeAlu.setText("");
-        txtGeneroAlu.setSelectedItem("");
-        txtContatoALu.setText("");
-        txtCPFAlu.setText("");
-        txtMatriculaAlu.setText("");
-        txtSerieAlu.setText("");
+        new AlunoController().atualizarAluno( txtNomeAlu.getText(),
+                Integer.parseInt(txtidadeAlu.getText()),
+                (String) txtGeneroAlu.getSelectedItem(),
+                txtContatoALu.getText(),
+                txtCPFAlu.getText(),
+                Integer.parseInt(txtMatriculaAlu.getText()),
+                txtSerieAlu.getText(),
+                this.getId());
         
+        JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso");
     }
 
+    public int getId(){ return this.id; }
+
+    public void setId(int id){ this.id = id; }
 }
-
-

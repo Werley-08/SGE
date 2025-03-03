@@ -1,11 +1,12 @@
-package com.Escola.util;
+package com.escola;
 
-import com.DAO.util.AlunoDAO;
-import com.DAO.util.FuncionarioDAO;
+import com.DAO.AlunoDAO;
+import com.DAO.FuncionarioDAO;
 import com.factory.util.AlunoFactory;
 import com.factory.util.FuncionarioFactory;
 import com.factory.util.PessoaFactory;
 import com.factory.util.TipoPessoa;
+import com.models.Pessoa;
 
 import java.util.ArrayList;
 
