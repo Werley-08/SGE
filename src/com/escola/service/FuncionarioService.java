@@ -6,10 +6,11 @@ import com.escola.models.Pessoa;
 import com.escola.pessoa_factory.FuncionarioFactory;
 import com.escola.pessoa_factory.PessoaFactory;
 import com.escola.pessoa_factory.TipoPessoa;
+import com.escola.service.interfaces.IFuncionarioService;
 
 import java.util.ArrayList;
 
-public class FuncionarioService {
+public class FuncionarioService implements IFuncionarioService{
 
     private IPessoaDAO funcionarioDAO;
     private PessoaFactory pessoaFactory;
@@ -34,9 +35,7 @@ public class FuncionarioService {
         funcionarioDAO.atualizar(funcionario, id);
     }
 
-    public ArrayList<Pessoa> visualizarTodosFuncionarios() {
-        return funcionarioDAO.buscar();
-    }
+    public ArrayList<Pessoa> visualizarTodosFuncionarios() { return funcionarioDAO.buscar(); }
 
     private void setPessoaFactory(TipoPessoa tipoPessoa) {
         if (tipoPessoa.equals(TipoPessoa.FUNCIONARIO)) {
