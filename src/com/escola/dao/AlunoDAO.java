@@ -1,8 +1,9 @@
 package com.escola.dao;
 
 import com.escola.bd_conexao.ConexaoDAO;
+import com.escola.dao.interfaces.IPessoaDAO;
 import com.escola.models.Aluno;
-import com.escola.models.Pessoa;
+import com.escola.models.interfaces.Pessoa;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -11,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class AlunoDAO {
+public class AlunoDAO implements IPessoaDAO{
 
     Connection conn;
     PreparedStatement pstm;
@@ -20,6 +21,7 @@ public class AlunoDAO {
     public AlunoDAO(){
     }
 
+    @Override
     public void adicionar(Pessoa pessoa){
 
         String sql = "insert into aluno (nome_aluno, idade_aluno, genero_aluno, contato_aluno, cpf_aluno, matricula_aluno, serie_aluno) values (?, ?, ?, ?, ?, ?, ?)";
@@ -48,6 +50,7 @@ public class AlunoDAO {
         }
     }
 
+    @Override
     public void remover(int id){
 
         String sql = "delete from aluno where id_aluno = ?";
@@ -69,6 +72,7 @@ public class AlunoDAO {
         }
     }
 
+    @Override
     public void atualizar(Pessoa pessoa, int id){
 
         String sql = "update aluno set nome_aluno = ?, idade_aluno = ?, genero_aluno = ?, contato_aluno = ?, cpf_aluno = ?, matricula_aluno = ?, serie_aluno = ? where id_aluno = ?";
@@ -98,6 +102,7 @@ public class AlunoDAO {
         }
     }
 
+    @Override
     public ArrayList<Pessoa> buscar(){
 
         ArrayList<Pessoa> alunos = new ArrayList<>();

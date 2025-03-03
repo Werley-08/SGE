@@ -4,8 +4,8 @@
  */
 package com.escola.view;
 
-import com.escola.dao.AutenticavelDAO;
-import com.escola.models.Autenticavel;
+import com.escola.controller.UsuarioController;
+import com.escola.models.Usuario;
 
 import javax.swing.*;
 import java.sql.ResultSet;
@@ -187,31 +187,24 @@ public class TelaLogin extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         
         try{
+
+            Usuario usuario = new Usuario(txtNomeUsuario.getText(), txtSenhaUsuario.getText());
+            ResultSet rsUsuarioDAO = new UsuarioController().autenticaUsuario(usuario);
             
-            Autenticavel autenticavel = new Autenticavel(txtNomeUsuario.getText(), txtSenhaUsuario.getText());
-            
-            AutenticavelDAO autentificavelDAO = new AutenticavelDAO();
-            
-            ResultSet rsAutenticavelDAO = autentificavelDAO.autenticaUsuario(autenticavel);
-            
-            if(rsAutenticavelDAO.next()){
+            if(rsUsuarioDAO.next()){
 
                 TelaPrincipal telaprincipal = new TelaPrincipal();
-
                 telaprincipal.setVisible(true);
-
                 dispose();
-                
+
             }else{
                 
                 JOptionPane.showMessageDialog(null, "Usuário ou Senha incorretas");
-                
             }
             
         }catch(Exception e) {
             
             JOptionPane.showMessageDialog(null, e.getMessage());
-        
         }
         
     }//GEN-LAST:event_btnLoginActionPerformed

@@ -6,7 +6,7 @@ package com.escola.view;
 
 import com.escola.controller.FuncionarioController;
 import com.escola.models.Funcionario;
-import com.escola.models.Pessoa;
+import com.escola.models.interfaces.Pessoa;
 
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;

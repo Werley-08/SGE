@@ -1,5 +1,7 @@
 package com.escola.models;
 
+import com.escola.models.interfaces.Pessoa;
+
 public class Funcionario implements Pessoa {
 
     private String nome;

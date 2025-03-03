@@ -1,4 +1,4 @@
-package com.escola.models;
+package com.escola.models.interfaces;
 
 public interface Pessoa {
     String getNome();

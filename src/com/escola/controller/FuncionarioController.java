@@ -1,6 +1,6 @@
 package com.escola.controller;
 
-import com.escola.models.Pessoa;
+import com.escola.models.interfaces.Pessoa;
 import com.escola.service.FuncionarioService;
 
 import java.util.ArrayList;
