@@ -2,6 +2,10 @@ package com.Escola.util;
 
 import com.DAO.util.AlunoDAO;
 import com.DAO.util.FuncionarioDAO;
+import com.factory.util.AlunoFactory;
+import com.factory.util.FuncionarioFactory;
+import com.factory.util.PessoaFactory;
+import com.factory.util.TipoPessoa;
 
 import java.util.ArrayList;
 
@@ -9,6 +13,7 @@ public class Escola{
 
     AlunoDAO alunoDAO;
     FuncionarioDAO funcionarioDAO;
+    PessoaFactory pessoaFactory;
     
     public Escola(){
 
@@ -17,16 +22,18 @@ public class Escola{
     }
     
     public void adicionarAluno(String nome, int idade, String genero, String contato, String CPF, int matricula, String serie){
-        
-        Aluno aluno = new Aluno(nome, idade, genero, contato, CPF, matricula, serie);
+
+        setPessoaFactory(TipoPessoa.ALUNO);
+        Pessoa aluno = pessoaFactory.criarPessoa(nome, idade, genero, contato, CPF, matricula, serie);
         alunoDAO.adicionar(aluno);
     }
     
     public void removerAluno(int id){ alunoDAO.remover(id); }
     
     public void atualizarAluno(String nome, int idade, String genero, String contato, String CPF, int matricula, String serie, int id){
-        
-        Aluno aluno = new Aluno(nome, idade, genero, contato, CPF, matricula, serie);
+
+        setPessoaFactory(TipoPessoa.ALUNO);
+        Pessoa aluno = pessoaFactory.criarPessoa(nome, idade, genero, contato, CPF, matricula, serie);
         alunoDAO.atualizar(aluno, id);
     }
     
@@ -34,8 +41,9 @@ public class Escola{
 
     
     public void adicionarFuncionario(String nome, int idade, String genero, String contato, String CPF, String cargo, String salario, int identificacao){
-        
-        Funcionario funcionario = new Funcionario(nome, idade, genero, contato, CPF, cargo, salario, identificacao);
+
+        setPessoaFactory(TipoPessoa.FUNCIONARIO);
+        Pessoa funcionario = pessoaFactory.criarPessoa(nome, idade, genero, contato, CPF, cargo, salario, identificacao);
         funcionarioDAO.adicionar(funcionario);
     }
     
@@ -43,9 +51,15 @@ public class Escola{
     
     public void atualizarFuncionario(String nome, int idade, String genero, String contato, String CPF, String cargo, String salario, int identificacao, int id){
 
-        Funcionario funcionario = new Funcionario(nome, idade, genero, contato, CPF, cargo, salario, identificacao);
+        setPessoaFactory(TipoPessoa.FUNCIONARIO);
+        Pessoa funcionario = pessoaFactory.criarPessoa(nome, idade, genero, contato, CPF, cargo, salario, identificacao);
         funcionarioDAO.atualizar(funcionario, id);
     }
     
     public ArrayList<Pessoa> visualizarTodosFuncionarios(){ return funcionarioDAO.buscar(); }
+
+    public void setPessoaFactory(TipoPessoa tipoPessoa){
+        if(tipoPessoa.equals(TipoPessoa.ALUNO)){ this.pessoaFactory = new AlunoFactory(); }
+        if(tipoPessoa.equals(TipoPessoa.FUNCIONARIO)){ this.pessoaFactory = new FuncionarioFactory(); }
+    }
 }
