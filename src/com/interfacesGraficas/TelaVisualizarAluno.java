@@ -5,7 +5,6 @@
 package com.interfacesGraficas;
 
 import com.controller.AlunoController;
-import com.escola.Escola;
 import com.models.Aluno;
 import com.models.Pessoa;
 

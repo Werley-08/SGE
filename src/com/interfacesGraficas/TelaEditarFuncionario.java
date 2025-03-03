@@ -4,7 +4,7 @@
  */
 package com.interfacesGraficas;
 
-import com.escola.Escola;
+import com.controller.FuncionarioController;
 import com.models.Funcionario;
 
 import javax.swing.*;
@@ -433,34 +433,20 @@ public class TelaEditarFuncionario extends javax.swing.JFrame {
 
     private void atualizarDados(){
        
-        new Escola().atualizarFuncionario( txtNomeFun.getText(), 
-                                           Integer.parseInt(txtIdadeFun.getText()),
-                                           (String) txtGeneroFun.getSelectedItem(),
-                                           txtContatoFun.getText(),
-                                           txtCpfFun.getText(),
-                                           (String) txtCargoFun.getSelectedItem(),
-                                           txtSalarioFun.getText(),
-                                           Integer.parseInt(txtIdentificacaoFun.getText()),
-                                           this.getId());
+        new FuncionarioController().atualizarFuncionario( txtNomeFun.getText(),
+                Integer.parseInt(txtIdadeFun.getText()),
+                (String) txtGeneroFun.getSelectedItem(),
+                txtContatoFun.getText(),
+                txtCpfFun.getText(),
+                (String) txtCargoFun.getSelectedItem(),
+                txtSalarioFun.getText(),
+                Integer.parseInt(txtIdentificacaoFun.getText()),
+                this.getId());
 
-                                           JOptionPane.showMessageDialog(null, "Dados Atualizados com Sucesso");
-        
+        JOptionPane.showMessageDialog(null, "Dados Atualizados com Sucesso");
     }
-    
-    // Métodos gets
-    
-    public int getId(){
-        
-        return this.id;
-        
-    }
-    
-    // Métodos sets
 
-    public void setId(int id){
-        
-        this.id = id;
-        
-    }
-    
+    public int getId(){ return this.id; }
+
+    public void setId(int id){ this.id = id; }
 }

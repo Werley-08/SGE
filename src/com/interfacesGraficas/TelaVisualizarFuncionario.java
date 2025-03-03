@@ -4,7 +4,7 @@
  */
 package com.interfacesGraficas;
 
-import com.escola.Escola;
+import com.controller.FuncionarioController;
 import com.models.Funcionario;
 import com.models.Pessoa;
 
@@ -255,7 +255,7 @@ public class TelaVisualizarFuncionario extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tabelaFuncionario.getModel();
         model.setNumRows(0);
         
-        ArrayList<Pessoa> lista = new Escola().visualizarTodosFuncionarios();
+        ArrayList<Pessoa> lista = new FuncionarioController().visualizarTodosFuncionarios();
         
         for(int i = 0; i < lista.size(); i++){
             
@@ -272,11 +272,8 @@ public class TelaVisualizarFuncionario extends javax.swing.JFrame {
                 funcionario.getCargo(),
                 funcionario.getSalario(),
                 funcionario.getIdentificacao()
-                
             });
-            
         }
-        
     }
     
     private void deletarFuncionario(){
@@ -286,7 +283,7 @@ public class TelaVisualizarFuncionario extends javax.swing.JFrame {
                 
         String id = tabelaFuncionario.getModel().getValueAt(linha, coluna).toString();
         
-        new Escola().removerFuncionario(Integer.parseInt(id));
+        new FuncionarioController().removerFuncionario(Integer.parseInt(id));
     }
 
     private Funcionario pegaValores(){
@@ -303,7 +300,5 @@ public class TelaVisualizarFuncionario extends javax.swing.JFrame {
                                                   Integer.parseInt(tabelaFuncionario.getModel().getValueAt(linha, 8).toString()));
         
         return funcionario;
-        
     }
-    
 }

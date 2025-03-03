@@ -5,7 +5,6 @@
 package com.interfacesGraficas;
 
 import com.controller.AlunoController;
-import com.escola.Escola;
 
 import javax.swing.*;
 

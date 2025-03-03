@@ -4,7 +4,7 @@
  */
 package com.interfacesGraficas;
 
-import com.escola.Escola;
+import com.controller.FuncionarioController;
 
 import javax.swing.*;
 
@@ -432,17 +432,16 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
 
     private void cadastrarFuncionario(){
        
-        new Escola().adicionarFuncionario( txtNomeFun.getText(), 
-                                    Integer.parseInt(txtIdadeFun.getText()),
-                                    (String) txtGeneroFun.getSelectedItem(),
-                                    txtContatoFun.getText(),
-                                    txtCpfFun.getText(),
-                                    (String) txtCargoFun.getSelectedItem(),
-                                    txtSalarioFun.getText(),
-                                    Integer.parseInt(txtIdentificacaoFun.getText()));
+        new FuncionarioController().adicionarFuncionario(txtNomeFun.getText(),
+                Integer.parseInt(txtIdadeFun.getText()),
+                (String) txtGeneroFun.getSelectedItem(),
+                txtContatoFun.getText(),
+                txtCpfFun.getText(),
+                (String) txtCargoFun.getSelectedItem(),
+                txtSalarioFun.getText(),
+                Integer.parseInt(txtIdentificacaoFun.getText()));
 
-                                    JOptionPane.showMessageDialog(null, "Dados Cadastrados com Sucesso");
-        
+        JOptionPane.showMessageDialog(null, "Dados Cadastrados com Sucesso");
     }
     
     private void limparCampos(){
@@ -455,7 +454,5 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         txtCargoFun.setSelectedItem("");
         txtSalarioFun.setText("");
         txtIdentificacaoFun.setText("");
-      
     }
-    
 }
