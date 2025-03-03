@@ -1,6 +1,6 @@
 package com.escola.dao.interfaces;
 
-import com.escola.models.Pessoa;
+import com.escola.models.interfaces.Pessoa;
 
 import java.util.ArrayList;
 

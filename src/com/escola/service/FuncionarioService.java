@@ -2,7 +2,7 @@ package com.escola.service;
 
 import com.escola.dao.FuncionarioDAO;
 import com.escola.dao.interfaces.IPessoaDAO;
-import com.escola.models.Pessoa;
+import com.escola.models.interfaces.Pessoa;
 import com.escola.pessoa_factory.FuncionarioFactory;
 import com.escola.pessoa_factory.PessoaFactory;
 import com.escola.pessoa_factory.TipoPessoa;

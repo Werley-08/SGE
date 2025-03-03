@@ -2,7 +2,7 @@ package com.escola.service;
 
 import com.escola.dao.AlunoDAO;
 import com.escola.dao.interfaces.IPessoaDAO;
-import com.escola.models.Pessoa;
+import com.escola.models.interfaces.Pessoa;
 import com.escola.pessoa_factory.AlunoFactory;
 import com.escola.pessoa_factory.PessoaFactory;
 import com.escola.pessoa_factory.TipoPessoa;

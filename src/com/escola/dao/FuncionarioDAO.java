@@ -3,7 +3,7 @@ package com.escola.dao;
 import com.escola.bd_conexao.ConexaoDAO;
 import com.escola.dao.interfaces.IPessoaDAO;
 import com.escola.models.Funcionario;
-import com.escola.models.Pessoa;
+import com.escola.models.interfaces.Pessoa;
 
 import javax.swing.*;
 import java.sql.Connection;
