@@ -1,6 +1,7 @@
 package com.escola.dao;
 
 import com.escola.bd_conexao.ConexaoDAO;
+import com.escola.dao.interfaces.IPessoaDAO;
 import com.escola.models.Funcionario;
 import com.escola.models.Pessoa;
 
@@ -11,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class FuncionarioDAO {
+public class FuncionarioDAO implements IPessoaDAO {
 
     Connection conn;
     PreparedStatement pstm;
@@ -20,6 +21,7 @@ public class FuncionarioDAO {
     public FuncionarioDAO(){
     }
 
+    @Override
     public void adicionar(Pessoa pessoa){
 
         String sql = "insert into funcionario (nome_func, idade_func, genero_func, contato_func, cpf_func, cargo_func, salario_func, identificacao_func) values (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -49,6 +51,7 @@ public class FuncionarioDAO {
         }
     }
 
+    @Override
     public void remover(int id){
 
         String sql = "delete from funcionario where id_func = ?";
@@ -70,6 +73,7 @@ public class FuncionarioDAO {
         }
     }
 
+    @Override
     public void atualizar(Pessoa pessoa, int id){
 
         String sql = "update funcionario set nome_func = ?, idade_func = ?, genero_func = ?, contato_func = ?, cpf_func = ?, cargo_func = ?, salario_func = ?, identificacao_func = ? where id_func = ?";
@@ -100,6 +104,7 @@ public class FuncionarioDAO {
         }
     }
 
+    @Override
     public ArrayList<Pessoa> buscar(){
 
         String sql = "select * from funcionario";
