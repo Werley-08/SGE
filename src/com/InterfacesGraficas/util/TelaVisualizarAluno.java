@@ -7,8 +7,9 @@ package com.InterfacesGraficas.util;
 import com.Escola.util.Aluno;
 import com.Escola.util.Escola;
 import com.Escola.util.Pessoa;
-import java.util.ArrayList;
+
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 
 /**
  *

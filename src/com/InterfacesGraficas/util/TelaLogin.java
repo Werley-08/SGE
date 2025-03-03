@@ -4,10 +4,11 @@
  */
 package com.InterfacesGraficas.util;
 
-import com.Conexao.util.AutenticavelDAO;
-import java.sql.ResultSet;
+import com.DAO.util.AutenticavelDAO;
 import com.Escola.util.Autenticavel;
-import javax.swing.JOptionPane;
+
+import javax.swing.*;
+import java.sql.ResultSet;
 
 /**
  *

@@ -1,82 +1,51 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.Escola.util;
+
+import com.DAO.util.AlunoDAO;
+import com.DAO.util.FuncionarioDAO;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author franc
- */
-public class Escola {
-    
-    public Aluno aluno;
-    public Funcionario funcionario;
+public class Escola{
+
+    AlunoDAO alunoDAO;
+    FuncionarioDAO funcionarioDAO;
     
     public Escola(){
-        
-        aluno = new Aluno("", 0, "", "", "", 0, "");
-        funcionario = new Funcionario("", 0, "", "", "", "" ,"", 0);
+
+        alunoDAO = new AlunoDAO();
+        funcionarioDAO = new FuncionarioDAO();
     }
-    
-    // Métodos dos Alunos
     
     public void adicionarAluno(String nome, int idade, String genero, String contato, String CPF, int matricula, String serie){
         
-        this.aluno = new Aluno(nome, idade, genero, contato, CPF, matricula, serie);
-        
-        aluno.adicionar(aluno);
+        Aluno aluno = new Aluno(nome, idade, genero, contato, CPF, matricula, serie);
+        alunoDAO.adicionar(aluno);
     }
     
-    public void removerAluno(int id){
-        
-        this.aluno.remover(id);
-        
-    }
+    public void removerAluno(int id){ alunoDAO.remover(id); }
     
     public void atualizarAluno(String nome, int idade, String genero, String contato, String CPF, int matricula, String serie, int id){
         
-        this.aluno = new Aluno(nome, idade, genero, contato, CPF, matricula, serie);
-        
-        aluno.atualizar(aluno, id);
-        
+        Aluno aluno = new Aluno(nome, idade, genero, contato, CPF, matricula, serie);
+        alunoDAO.atualizar(aluno, id);
     }
     
-    public ArrayList<Pessoa> visualizarTodosAlunos(){
-        
-        return this.aluno.buscar();
-        
-    }
-    
-    // Métodos dos Funcionarios
+    public ArrayList<Pessoa> visualizarTodosAlunos(){ return alunoDAO.buscar(); }
+
     
     public void adicionarFuncionario(String nome, int idade, String genero, String contato, String CPF, String cargo, String salario, int identificacao){
         
-        this.funcionario = new Funcionario(nome, idade, genero, contato, CPF, cargo, salario, identificacao);
-        
-        funcionario.adicionar(funcionario);
+        Funcionario funcionario = new Funcionario(nome, idade, genero, contato, CPF, cargo, salario, identificacao);
+        funcionarioDAO.adicionar(funcionario);
     }
     
-    public void removerFuncionario(int id){
-        
-        funcionario.remover(id);
-        
-    }
+    public void removerFuncionario(int id){ funcionarioDAO.remover(id); }
     
     public void atualizarFuncionario(String nome, int idade, String genero, String contato, String CPF, String cargo, String salario, int identificacao, int id){
-        
-         
-        this.funcionario = new Funcionario(nome, idade, genero, contato, CPF, cargo, salario, identificacao);
-        
-        funcionario.atualizar(funcionario, id);
-        
+
+        Funcionario funcionario = new Funcionario(nome, idade, genero, contato, CPF, cargo, salario, identificacao);
+        funcionarioDAO.atualizar(funcionario, id);
     }
     
-    public ArrayList<Pessoa> visualizarTodosFuncionarios(){
-        
-        return funcionario.buscar();
-        
-    }
+    public ArrayList<Pessoa> visualizarTodosFuncionarios(){ return funcionarioDAO.buscar(); }
 }

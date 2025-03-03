@@ -6,7 +6,8 @@ package com.InterfacesGraficas.util;
 
 import com.Escola.util.Escola;
 import com.Escola.util.Funcionario;
-import javax.swing.JOptionPane;
+
+import javax.swing.*;
 
 /**
  *
