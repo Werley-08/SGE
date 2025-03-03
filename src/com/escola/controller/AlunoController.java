@@ -2,12 +2,13 @@ package com.escola.controller;
 
 import com.escola.models.Pessoa;
 import com.escola.service.AlunoService;
+import com.escola.service.interfaces.IAlunoService;
 
 import java.util.ArrayList;
 
 public class AlunoController {
 
-    private AlunoService alunoService;
+    private IAlunoService alunoService;
 
     public AlunoController() {
         alunoService = new AlunoService();
