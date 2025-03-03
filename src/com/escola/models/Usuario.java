@@ -1,11 +1,11 @@
 package com.escola.models;
 
-public class Autenticavel{
+public class Usuario {
     
     private String nomeUsuario;
     private String senhaUsuario;
 
-    public Autenticavel(String nomeUsuario, String senhaUsuario){
+    public Usuario(String nomeUsuario, String senhaUsuario){
         
         setNomeUsuario(nomeUsuario);
         setSenhaUsuario(senhaUsuario);

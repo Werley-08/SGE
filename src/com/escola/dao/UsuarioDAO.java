@@ -1,7 +1,7 @@
 package com.escola.dao;
 
 import com.escola.bd_conexao.ConexaoDAO;
-import com.escola.models.Autenticavel;
+import com.escola.models.Usuario;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -9,11 +9,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AutenticavelDAO{
+public class UsuarioDAO {
     
     Connection conn;
     
-    public ResultSet autenticaUsuario(Autenticavel autenticavel){
+    public ResultSet autenticaUsuario(Usuario autenticavel){
         
         conn = new ConexaoDAO().conectaBD();
         
