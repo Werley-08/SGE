@@ -2,12 +2,13 @@ package com.escola.controller;
 
 import com.escola.models.Usuario;
 import com.escola.service.UsuarioService;
+import com.escola.service.interfaces.IUsuarioService;
 
 import java.sql.ResultSet;
 
 public class UsuarioController{
 
-    UsuarioService usuarioService;
+    IUsuarioService usuarioService;
 
     public UsuarioController(){
         usuarioService = new UsuarioService();
